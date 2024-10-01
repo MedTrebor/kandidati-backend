@@ -1,0 +1,24 @@
+CREATE TABLE candidates (
+	jmbg CHAR(13) PRIMARY KEY,
+	first_name TEXT NOT NULL,
+	last_name TEXT NOT NULL,
+	birth_year SMALLINT NOT NULL,
+	email TEXT UNIQUE NOT NULL,
+	phone TEXT UNIQUE NOT NULL,
+	is_employed BOOL NOT NULL DEFAULT FALSE,
+	last_updated DATE NOT NULL DEFAULT CURRENT_DATE
+);
+
+CREATE OR REPLACE FUNCTION set_last_updated()
+RETURNS TRIGGER AS $$
+BEGIN
+	IF (TG_OP = 'UPDATE') THEN
+		NEW.last_updated := CURRENT_DATE;
+	END IF;
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER on_candidates_update
+BEFORE UPDATE ON candidates
+FOR EACH ROW EXECUTE FUNCTION set_last_updated();
