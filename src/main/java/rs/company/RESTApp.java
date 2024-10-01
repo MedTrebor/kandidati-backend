@@ -11,7 +11,7 @@ import rs.company.route.rest.GetCandidatesRoute;
 
 public class RESTApp {
 
-    public static final Logger LOG = LoggerFactory.getLogger(RESTApp.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RESTApp.class);
 
     public static void main(String[] args) {
 

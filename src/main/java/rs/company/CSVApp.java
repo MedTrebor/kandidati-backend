@@ -9,7 +9,7 @@ import rs.company.route.CSVRoute;
 
 public class CSVApp {
 
-    public static final Logger LOG = LoggerFactory.getLogger(CSVApp.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CSVApp.class);
 
     public static void main(String[] args) {
 
