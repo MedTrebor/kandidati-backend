@@ -4,6 +4,7 @@ import org.apache.camel.Message;
 import rs.company.candidate.Candidate;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class CandidateValidator {
 
@@ -79,5 +80,23 @@ public class CandidateValidator {
             throw new CandidateValidationException("'jmbg' query parameter is missing");
         }
         validateJmbg((String) msg.getHeader("jmbg"));
+    }
+
+    public void validateDelete(Object body) throws CandidateValidationException {
+        if (body == null || body.getClass() != ArrayList.class) {
+            throw new CandidateValidationException("Invalid request body");
+        }
+
+        @SuppressWarnings("rawtypes")
+        ArrayList candidates = (ArrayList) body;
+
+        if (candidates.isEmpty()) throw new CandidateValidationException("No candidates provided");
+
+        for (Object jmbg : candidates) {
+            if (jmbg == null || jmbg.getClass() != String.class) {
+                throw new CandidateValidationException("Invalid JMBG provided");
+            }
+            validateJmbg((String) jmbg);
+        }
     }
 }

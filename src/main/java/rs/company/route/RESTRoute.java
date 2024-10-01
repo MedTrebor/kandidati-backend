@@ -28,6 +28,8 @@ public class RESTRoute extends RouteBuilder {
                 // POST '/'
                 .post().type(Candidate.class).to("direct:insertCandidate")
                 // PUT '/'
-                .put().type(Candidate.class).to("direct:updateCandidate");
+                .put().type(Candidate.class).to("direct:updateCandidate")
+                // DELETE '/'
+                .delete().type(String[].class).to("direct:deleteCandidates");
     }
 }
