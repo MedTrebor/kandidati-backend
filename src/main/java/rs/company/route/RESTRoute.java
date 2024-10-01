@@ -20,6 +20,8 @@ public class RESTRoute extends RouteBuilder {
         rest()
                 .get()
                 .param().name("offset").type(RestParamType.query).defaultValue("0").endParam()
-                .to("direct:getCandidates");
+                .to("direct:getCandidates")
+
+                .get("/count/").to("direct:countCandidates");
     }
 }
