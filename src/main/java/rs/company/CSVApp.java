@@ -5,7 +5,7 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import rs.company.datasource.DbDataSource;
-import rs.company.route.csv.CSVRoute;
+import rs.company.route.CSVRoute;
 
 public class CSVApp {
 

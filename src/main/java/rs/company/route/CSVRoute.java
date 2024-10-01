@@ -1,4 +1,4 @@
-package rs.company.route.csv;
+package rs.company.route;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.BindyType;
