@@ -26,6 +26,8 @@ public class RESTRoute extends RouteBuilder {
                 // GET '/count
                 .get("/count/").to("direct:countCandidates")
                 // POST '/'
-                .post().type(Candidate.class).to("direct:insertCandidate");
+                .post().type(Candidate.class).to("direct:insertCandidate")
+                // PUT '/'
+                .put().type(Candidate.class).to("direct:updateCandidate");
     }
 }

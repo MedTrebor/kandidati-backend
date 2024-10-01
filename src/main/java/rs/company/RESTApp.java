@@ -8,6 +8,7 @@ import rs.company.route.RESTRoute;
 import rs.company.route.rest.CountCandidatesRoute;
 import rs.company.route.rest.GetCandidatesRoute;
 import rs.company.route.rest.InsertCandidateRoute;
+import rs.company.route.rest.UpdateCandidateRoute;
 
 
 public class RESTApp {
@@ -22,7 +23,7 @@ public class RESTApp {
 
         try (var conf = main.configure()) {
             conf.addRoutesBuilder(RESTRoute.class, GetCandidatesRoute.class,
-                    CountCandidatesRoute.class, InsertCandidateRoute.class);
+                    CountCandidatesRoute.class, InsertCandidateRoute.class, UpdateCandidateRoute.class);
             main.run(args);
         } catch (Exception e) {
             LOG.error(e.getMessage());

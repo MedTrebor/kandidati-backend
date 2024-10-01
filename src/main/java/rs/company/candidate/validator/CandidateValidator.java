@@ -65,4 +65,19 @@ public class CandidateValidator {
             throw new CandidateValidationException("'lastUpdated' should not be provided");
         }
     }
+
+    public void validateUpdate(Candidate candidate) throws CandidateValidationException {
+        if (candidate.getJmbg() != null) validateJmbg(candidate.getJmbg());
+        if (candidate.getBirthYear() != null && (
+                candidate.getBirthYear() >= LocalDate.now().getYear() || candidate.getBirthYear() < 1900)) {
+            throw new CandidateValidationException("'birthYear' field is incorrect");
+        }
+    }
+
+    public static void validateJmbgQueryParam(Message msg) throws CandidateValidationException {
+        if (msg.getHeader("jmbg") == null) {
+            throw new CandidateValidationException("'jmbg' query parameter is missing");
+        }
+        validateJmbg((String) msg.getHeader("jmbg"));
+    }
 }
